@@ -22,7 +22,7 @@ const PreviewCard = {
               longer.
             </p>
 
-            <a href="#" class="btn btn-success">Посмотреть</a>
+            <a href='PreviewCard.html' class="btn btn-success">Посмотреть</a>
           </div>
         </div>
       </div>
@@ -33,3 +33,42 @@ const PreviewCard = {
 Vue.component("preview-card", PreviewCard);
 
 new Vue({ el: "#app" });
+
+const swiper = new Swiper(".swiper", {
+  direction: "horizontal",
+  loop: true,
+  slidesPerView: 6,
+  spaceBetween: 16,
+  freeMode: true,
+
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    500: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    800: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+    },
+    1500: {
+      slidesPerView: 5,
+      spaceBetween: 20,
+    },
+    1600: {
+      slidesPerView: 6,
+      spaceBetween: 16,
+    },
+  },
+});
+
+timer = setInterval(() => {
+  swiper.translateTo(swiper.translate - 10 || 0, 700);
+}, 500);
