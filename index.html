@@ -20,55 +20,54 @@
   </head>
   <body>
     <header>
-      <h3>ШАРПАХУИ</h3>
+      <h3>Хакатон 2022</h3>
     </header>
 
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img
-            src="https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510"
-            class="card__image img-fluid rounded-start"
-            alt="..."
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510"
-            class="card__image img-fluid rounded-start"
-            alt="..."
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510"
-            class="card__image img-fluid rounded-start"
-            alt="..."
-          />
+    <div id="app">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide"
+            v-for="(image, idx) in imagesInSwiper"
+            :key="idx"
+          >
+            <img
+              :src="image"
+              class="swiper__image img-fluid rounded-start"
+              alt="..."
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <main id="app">
-      <div class="container">
+      <div class="container preview-cards">
         <div class="row">
-          <div class="col-md-6">
-            <preview-card />
-          </div>
-          <div class="col-md-6">
-            <preview-card />
-          </div>
-          <div class="col-md-6">
-            <preview-card />
-          </div>
-          <div class="col-md-6">
-            <preview-card />
+          <div v-for="(place, idx) in places" :key="idx" class="col-md-6">
+            <preview-card :place="place" />
           </div>
         </div>
       </div>
-    </main>
 
-    <footer>ООО ЧАЙНИКИ</footer>
+      <div class="container useful">
+        <div class="useful-block">
+          <img
+            class="useful-block__image"
+            src="https://cdn-icons-png.flaticon.com/512/5087/5087838.png"
+            width="18px"
+            height="18px"
+            alt=""
+          />
+
+          <div class="useful-block__title">
+            Проживание
+
+            <div class="useful-block__link">Узнать подробнее</div>
+          </div>
+        </div>
+      </div>
+
+      <support-bubble />
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

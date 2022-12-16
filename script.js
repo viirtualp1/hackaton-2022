@@ -1,25 +1,24 @@
 const PreviewCard = {
-  data: function () {
-    return {
-      counter: 1,
-    };
+  props: {
+    place: {
+      type: Object,
+      required: true,
+    },
   },
   template: `
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
           <img 
-            src="https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510" 
+            :src="place.image" 
             class="card__image img-fluid rounded-start" 
             alt="..." />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">{{ place.title }}</h5>
             <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+                {{ place.description }}
             </p>
 
             <a href='PreviewCard.html' class="btn btn-success">Посмотреть</a>
@@ -30,9 +29,92 @@ const PreviewCard = {
   `,
 };
 
-Vue.component("preview-card", PreviewCard);
+const SupportBubble = {
+  data() {
+    return {
+      isMini: true,
+    };
+  },
+  template: `
+     <div class="support-bubble" :class="{ 'support-bubble--mini': isMini }">
+      <div class="support-bubble__header">
+        Полезные ресурсы
 
-new Vue({ el: "#app" });
+        <button class="support-bubble__toggle" @click="isMini = !isMini">
+          {{ isMini ? '△' : '▽' }}
+        </button>
+      </div>
+      <div class="support-bubble__body">
+        <div class="support-bubble__section">
+          <div class="support-bubble__section-title">Заводы:</div>
+          <div class="support-bubble__section-links">
+            <a href="">Амурский ГХК</a>
+            <a href="">Амурский ГПЗ</a>
+          </div>
+        </div>
+
+        <div class="support-bubble__section">
+          <div class="support-bubble__section-title">Кинотеатры:</div>
+          <div class="support-bubble__section-links">
+            <a href="">Амурский ГХК</a>
+            <a href="">Амурский ГПЗ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+};
+
+Vue.component("preview-card", PreviewCard);
+Vue.component("support-bubble", SupportBubble);
+
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      places: [
+        {
+          title: "Амурлаг",
+          image:
+            "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+          description:
+            "Амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг",
+        },
+        {
+          title: "Амурлаг",
+          image:
+            "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+          description:
+            "Амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг",
+        },
+        {
+          title: "Амурлаг",
+          image:
+            "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+          description:
+            "Амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг",
+        },
+        {
+          title: "Амурлаг",
+          image:
+            "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+          description:
+            "Амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг амурлаг",
+        },
+      ],
+
+      imagesInSwiper: [
+        "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+        "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+        "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+        "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+        "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+        "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+        "https://lh3.googleusercontent.com/p/AF1QipNJGhi5azvn1rLyltliJ2GBwxCcYhy3NfGXzy9-=s680-w680-h510",
+      ],
+    };
+  },
+});
 
 const swiper = new Swiper(".swiper", {
   direction: "horizontal",

@@ -5,19 +5,25 @@ header {
 }
 
 footer {
-  width: 100%;
-  position: relative;
+  position: absolute;
+  left: 0;
   bottom: 0;
-  padding: 24px;
   border-top: 2px solid silver;
+  width: 100%;
+  height: 80px;
+  padding: 20px;
+}
+
+#app {
+  padding: 80px 80px;
 }
 
 @media screen and (min-width: 900px) {
   main {
-    padding: 70px 120px;
+    padding: 64px 120px;
   }
 
-  .swiepr {
+  .swiper {
     margin-bottom: 0;
   }
 }
@@ -25,7 +31,6 @@ footer {
 .card__image {
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
 }
 
 .swiper {
@@ -36,7 +41,143 @@ footer {
   margin-bottom: 24px;
 }
 
+.swiper__image {
+  border: 18px;
+}
+
 .swiper-wrapper {
   transition-timing-function: linear;
   transition-duration: 500ms;
+}
+
+.preview-cards {
+  margin-top: 64px;
+}
+
+.support-bubble {
+  position: absolute;
+  bottom: 0;
+  right: 72px;
+  width: 400px;
+  height: 500px;
+  border: 1px solid silver;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 16px 24px;
+  background: #fff;
+  overflow: auto;
+}
+
+.support-bubble--mini {
+  height: 70px;
+  overflow: hidden;
+}
+
+.support-bubble--mini > .support-bubble__body {
+  display: none;
+}
+
+.support-bubble__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.support-bubble__body {
+  padding: 4px;
+  display: block;
+}
+
+.support-bubble__toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+}
+
+.support-bubble__section:not(:first-of-type) {
+  margin-top: 24px;
+}
+
+.support-bubble__section-title {
+  text-decoration: underline;
+  padding: 8px;
+  border-bottom: 2px solid silver;
+}
+
+.support-bubble__section-links a {
+  display: block;
+  margin-left: 12px;
+}
+
+.support-bubble__section-links a:first-of-type {
+  margin-top: 12px;
+}
+
+.useful-block {
+  margin-top: 24px;
+  border: 1px solid silver;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  column-gap: 12px;
+  width: 240px;
+}
+
+/* Preview Card Page */
+.place__poster img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.place-sidebar {
+  width: 330px;
+  height: 500px;
+  position: absolute;
+  margin-top: -84px;
+  right: 112px;
+  background: white;
+  border: 1px solid silver;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.place-sidebar__header-title {
+  font-size: 30px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.place-sidebar__header-btn {
+  width: 100%;
+  height: 42px;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.place-body {
+  margin: 28px 128px;
+}
+
+.place-body__description {
+  max-width: 600px;
+}
+
+.place-sidebar__bot {
+  margin-top: 24px;
+  border: 1px solid silver;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  column-gap: 12px;
+}
+
+.place-sidebar__bot-title {
+  font-weight: 700;
+}
+
+.place-section {
+  margin-bottom: 48px;
 }
