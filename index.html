@@ -19,12 +19,28 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <header>
-      <h3>Хакатон 2022</h3>
-    </header>
-
     <div id="app">
-      <div class="swiper">
+      <header class="header">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2867/2867836.png"
+          width="28px"
+          height="28px"
+          alt=""
+        />
+        <h3>Хакатур</h3>
+
+      <div class="support-text">
+          При поддержке администриции г. Свободного; ООО "Сибур"; ООО "Газпром"
+      </div>
+
+        <info-button
+          text="Сайт разработан в 2022 году на
+            Свободненском хакатон и
+            содержит информацию о местах для посещения в Свободном"
+        />
+      </header>
+
+      <div class="swiper swiper-main">
         <div class="swiper-wrapper">
           <div
             class="swiper-slide"
@@ -42,26 +58,24 @@
 
       <div class="container preview-cards">
         <div class="row">
-          <div v-for="(place, idx) in places" :key="idx" class="col-md-6">
-            <preview-card :place="place" />
+          <div class="sort col-md-12">
+            Сортировать:
+
+            <a class="sort__link" @click="sort('all')">Все</a>
+            <a class="sort__link" @click="sort('factory')">Заводы</a>
+            <a class="sort__link" @click="sort('culture')">Культура</a>
+            <a class="sort__link" @click="sort('sport')">Спорт</a>
+            <a class="sort__link" @click="sort('')">Кафе</a>
+            <a class="sort__link" @click="sort('')">Рестораны</a>
           </div>
-        </div>
-      </div>
 
-      <div class="container useful">
-        <div class="useful-block">
-          <img
-            class="useful-block__image"
-            src="https://cdn-icons-png.flaticon.com/512/5087/5087838.png"
-            width="18px"
-            height="18px"
-            alt=""
-          />
-
-          <div class="useful-block__title">
-            Проживание
-
-            <div class="useful-block__link">Узнать подробнее</div>
+          <div v-for="(place, idx) in places" :key="idx" class="col-md-6">
+            <preview-card
+              :place="place"
+              :class="{ 'is-gos': place.isGos }"
+              :is-gos="place.isGos"
+              :is-dk="place.isDk"
+            />
           </div>
         </div>
       </div>
